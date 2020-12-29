@@ -8,10 +8,10 @@ public class Updater {
     
     public static void sendPlayer(Player player){
         try {
-            if (AdminGUI.updater.checkForUpdates()) {
+            if (AdminGUI.new_update) {
                player.sendMessage(Message.chat("&7[&cAdmin GUI&7] &aAn update was found!"));
-               player.sendMessage(Message.chat("&7[&cAdmin GUI&7] &aNew version: &b" + AdminGUI.updater.getLatestVersion()));
-               player.sendMessage(Message.chat("&7[&cAdmin GUI&7] &aDownload: &b" + AdminGUI.updater.getResourceURL()));
+               player.sendMessage(Message.chat("&7[&cAdmin GUI&7] &aNew version: &b" + AdminGUI.new_version));
+               player.sendMessage(Message.chat("&7[&cAdmin GUI&7] &aDownload: &bhttps://www.spigotmc.org/resources/admin-gui.71157/"));
             }
         } catch (Exception e) {
            player.sendMessage(Message.chat("&7[&cAdmin GUI&7] &cCould not check for updates!"));
@@ -20,10 +20,10 @@ public class Updater {
 
     public static void sendConsole(){
         try {
-            if (AdminGUI.updater.checkForUpdates()) {
+            if (AdminGUI.new_update) {
                 Bukkit.getConsoleSender().sendMessage(Message.chat("&7[&cAdmin GUI&7] &aAn update was found!"));
-                Bukkit.getConsoleSender().sendMessage(Message.chat("&7[&cAdmin GUI&7] &aNew version: &b" + AdminGUI.updater.getLatestVersion()));
-                Bukkit.getConsoleSender().sendMessage(Message.chat("&7[&cAdmin GUI&7] &aDownload: &b" + AdminGUI.updater.getResourceURL()));
+                Bukkit.getConsoleSender().sendMessage(Message.chat("&7[&cAdmin GUI&7] &aNew version: &b" + AdminGUI.new_version));
+                Bukkit.getConsoleSender().sendMessage(Message.chat("&7[&cAdmin GUI&7] &aDownload: &bhttps://www.spigotmc.org/resources/admin-gui.71157/"));
             }
         } catch (Exception e) {
             Bukkit.getConsoleSender().sendMessage(Message.chat("&7[&cAdmin GUI&7] &cCould not check for updates!"));
