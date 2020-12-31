@@ -22,7 +22,6 @@ public class AdminGUI extends JavaPlugin {
 
     private static AdminGUI instance;
 
-    public static Boolean new_update = false;
     public static String new_version = null;
 
     //VaultAPI
@@ -39,17 +38,15 @@ public class AdminGUI extends JavaPlugin {
         mkdir();
         loadYamls();
 
-        info("&aEnabling");
-
         //bStats
         if(!Bukkit.getVersion().contains("1.8")) new MetricsLite(this);
 
         //Updater
         new UpdateChecker(this, 71157).getVersion(updater_version -> {
             if (!getDescription().getVersion().equalsIgnoreCase(updater_version)) {
-               new_update = true;
                new_version = updater_version;
             }
+            info("&aEnabling");
         });
 
         //VaultAPI
@@ -124,7 +121,11 @@ public class AdminGUI extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Name: &bAdminGUI"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Developer: &bBlack1_TV"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b" + getDescription().getVersion() + " (FREE)"));
+        if(new_version != null){
+            Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b" + getDescription().getVersion() + " (FREE) (&6update available&b)"));
+        }else{
+            Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b" + getDescription().getVersion() + " (FREE)"));
+        }
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Premium:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9- &bhttps://polymart.org/resource/admin-gui-premium.49"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9- &bhttps://songoda.com/marketplace/product/admin-gui-premium-plugin.143"));
