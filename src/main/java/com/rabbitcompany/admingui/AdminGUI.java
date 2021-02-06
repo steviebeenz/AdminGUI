@@ -105,14 +105,6 @@ public class AdminGUI extends JavaPlugin {
 
     public YamlConfiguration getLang() { return this.lang; }
 
-    public void saveLang() {
-        try {
-            this.lang.save(this.l);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     private void info(String message){
         Bukkit.getConsoleSender().sendMessage(Message.chat(""));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8[]=====[" + message + " &cAdminGUI&8]=====[]"));
@@ -126,9 +118,7 @@ public class AdminGUI extends JavaPlugin {
         }else{
             Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b" + getDescription().getVersion() + " (FREE)"));
         }
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Premium:"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9- &bhttps://polymart.org/resource/admin-gui-premium.49"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9- &bhttps://songoda.com/marketplace/product/admin-gui-premium-plugin.143"));
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Premium: &bhttps://rabbit-company.com"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
