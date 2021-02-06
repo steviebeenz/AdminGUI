@@ -1,5 +1,5 @@
 name: Admin-GUI
-version: 1.4.5
+version: 1.4.8
 main: com.rabbitcompany.admingui.AdminGUI
 api-version: 1.13
 authors: [RabbitCompany]
@@ -8,4 +8,4 @@ softdepend: [Vault, SuperVanish, PremiumVanish]
 commands:
   admin:
     usage: /<command>
-    description: Show Admin GUI
+    description: Show Admin GUIs

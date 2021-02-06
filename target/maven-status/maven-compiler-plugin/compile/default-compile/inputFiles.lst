@@ -1,13 +1,13 @@
 /home/ziga/IdeaProjects/AdminGUI/src/main/java/com/rabbitcompany/admingui/utils/Colors.java
 /home/ziga/IdeaProjects/AdminGUI/src/main/java/com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_13.java
 /home/ziga/IdeaProjects/AdminGUI/src/main/java/com/rabbitcompany/admingui/commands/Admin.java
-/home/ziga/IdeaProjects/AdminGUI/src/main/java/com/rabbitcompany/admingui/SpigotUpdater.java
 /home/ziga/IdeaProjects/AdminGUI/src/main/java/com/rabbitcompany/admingui/utils/potions/Version_12.java
 /home/ziga/IdeaProjects/AdminGUI/src/main/java/com/rabbitcompany/admingui/utils/Item.java
 /home/ziga/IdeaProjects/AdminGUI/src/main/java/com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_10.java
 /home/ziga/IdeaProjects/AdminGUI/src/main/java/com/rabbitcompany/admingui/utils/spawners/materials/Material_Version_13.java
 /home/ziga/IdeaProjects/AdminGUI/src/main/java/com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_10.java
 /home/ziga/IdeaProjects/AdminGUI/src/main/java/com/rabbitcompany/admingui/listeners/InventoryClickListener.java
+/home/ziga/IdeaProjects/AdminGUI/src/main/java/com/rabbitcompany/admingui/UpdateChecker.java
 /home/ziga/IdeaProjects/AdminGUI/src/main/java/com/rabbitcompany/admingui/utils/spawners/messages/Message_Version_9.java
 /home/ziga/IdeaProjects/AdminGUI/src/main/java/com/rabbitcompany/admingui/listeners/PlayerJoinListener.java
 /home/ziga/IdeaProjects/AdminGUI/src/main/java/com/rabbitcompany/admingui/listeners/PlayerLoginListener.java

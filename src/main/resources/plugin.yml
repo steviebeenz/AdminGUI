@@ -8,4 +8,4 @@ softdepend: [Vault, SuperVanish, PremiumVanish]
 commands:
   admin:
     usage: /<command>
-    description: Show Admin GUI
+    description: Show Admin GUIs

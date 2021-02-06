@@ -9,20 +9,20 @@ import com.rabbitcompany.admingui.utils.Message;
 import com.rabbitcompany.admingui.utils.Updater;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
 public class AdminGUI extends JavaPlugin {
 
     private static AdminGUI instance;
+
+    public static String new_version = null;
 
     //VaultAPI
     private static Economy econ = null;
@@ -31,8 +31,6 @@ public class AdminGUI extends JavaPlugin {
     private File l = null;
     private YamlConfiguration lang = new YamlConfiguration();
 
-    public static SpigotUpdater updater;
-
     @Override
     public void onEnable() {
         instance = this;
@@ -40,16 +38,16 @@ public class AdminGUI extends JavaPlugin {
         mkdir();
         loadYamls();
 
-        //Bukkit.getConsoleSender().sendMessage(Message.chat("&7[&cAdmin GUI&7] &aPlugin is enabled!"));
-        info("&aEnabling");
-
         //bStats
-        if(!Bukkit.getVersion().contains("1.8")){
-            MetricsLite metricsLite = new MetricsLite(this);
-        }
+        if(!Bukkit.getVersion().contains("1.8")) new MetricsLite(this);
 
         //Updater
-        updater = new SpigotUpdater(this, 71157);
+        new UpdateChecker(this, 71157).getVersion(updater_version -> {
+            if (!getDescription().getVersion().equalsIgnoreCase(updater_version)) {
+               new_version = updater_version;
+            }
+            info("&aEnabling");
+        });
 
         //VaultAPI
         if(setupEconomy()){
@@ -66,12 +64,11 @@ public class AdminGUI extends JavaPlugin {
         new PlayerLoginListener(this);
 
         //Commands
-        this.getCommand("admin").setExecutor((CommandExecutor) new Admin());
+        this.getCommand("admin").setExecutor(new Admin());
     }
 
     @Override
     public void onDisable() {
-        //Bukkit.getConsoleSender().sendMessage(Message.chat("&7[&cAdmin GUI&7] &4Plugin is disabled!"));
         info("&4Disabling");
     }
 
@@ -101,24 +98,12 @@ public class AdminGUI extends JavaPlugin {
     private void loadYamls(){
         try {
             this.lang.load(this.l);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InvalidConfigurationException e) {
+        } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
     }
 
     public YamlConfiguration getLang() { return this.lang; }
-
-    public void saveLang() {
-        try {
-            this.lang.save(this.l);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     private void info(String message){
         Bukkit.getConsoleSender().sendMessage(Message.chat(""));
@@ -128,7 +113,12 @@ public class AdminGUI extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Name: &bAdminGUI"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Developer: &bBlack1_TV"));
-        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b1.4.5"));
+        if(new_version != null){
+            Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b" + getDescription().getVersion() + " (FREE) (&6update available&b)"));
+        }else{
+            Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Version: &b" + getDescription().getVersion() + " (FREE)"));
+        }
+        Bukkit.getConsoleSender().sendMessage(Message.chat("&8|   &9Premium: &bhttps://rabbit-company.com"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8| &cSupport:"));
         Bukkit.getConsoleSender().sendMessage(Message.chat("&8|"));
